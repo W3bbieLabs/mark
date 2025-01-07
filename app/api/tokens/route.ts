@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 async function validateRequest(request: Request) {
-    const origin = request.headers.get('origin');
+    const origin = request.headers.get('referer');
     const host = request.headers.get('host');
     console.log(request.headers);
     console.log(origin, host);
