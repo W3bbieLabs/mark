@@ -18,7 +18,7 @@ export default function Home() {
       if (Object.keys(tokens).length == 0) {
         let tokens: any = await useGetTokens();
         setTokens(tokens);
-        //console.log(tokens);
+        console.log(tokens);
       }
     })();
 
@@ -27,6 +27,7 @@ export default function Home() {
     const interval = setInterval(async () => {
       let tokens: any = await useGetTokens();
       setTokens(tokens);
+      console.log(tokens);
     }, milliseconds);
 
     return () => clearInterval(interval);
