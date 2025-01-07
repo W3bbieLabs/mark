@@ -1,10 +1,31 @@
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+async function validateRequest(request: Request) {
+    const origin = request.headers.get('origin');
+    const host = request.headers.get('host');
+
+    // In development, allow localhost
+    if (process.env.NODE_ENV === 'development') {
+        return true;
+    }
+
+    // In production, verify the request is coming from our domain
+    if (origin) {
+        // The origin should match our host
+        return new URL(origin).host === host;
+    }
+
+    return false;
+}
+
+export async function GET(request: Request) {
     try {
         const API_KEY = process.env.API_KEY;
         const ENDPOINT = process.env.ENDPOINT;
         const QUERY = process.env.QUERY;
+        if (!(await validateRequest(request))) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
         const response = await fetch(
             `${ENDPOINT}?${QUERY}=${API_KEY}`,
             {
