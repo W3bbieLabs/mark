@@ -15,15 +15,16 @@ export default function Home() {
 
   useLayoutEffect(() => {
     (async () => {
-      if (Object.keys(tokens).length == 0) {
-        let tokens: any = await useGetTokens();
-        setTokens(tokens);
-        console.log(tokens);
-      }
+      //if (Object.keys(tokens).length == 0) {
+      let tokens: any = await useGetTokens();
+      setTokens(tokens);
+      console.log(tokens);
+      //}
     })();
 
     let mintutes = 0.5;
     const milliseconds = mintutes * 60 * 1000;
+
     const interval = setInterval(async () => {
       let tokens: any = await useGetTokens();
       setTokens(tokens);
