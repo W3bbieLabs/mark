@@ -22,7 +22,7 @@ export default function Home() {
       }
     })();
 
-    let mintutes = 3;
+    let mintutes = 0.5;
     const milliseconds = mintutes * 60 * 1000;
     const interval = setInterval(async () => {
       let tokens: any = await useGetTokens();
@@ -52,7 +52,7 @@ export default function Home() {
                     href={tokens[key].url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg font-mono text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
+                    className="px-4 py-2 bg-gray-800 dark:bg-gray-800 rounded-lg font-mono text-sm hover:bg-gray-700 dark:hover:bg-gray-700"
                   >
                     {key}
                   </a>
@@ -60,7 +60,7 @@ export default function Home() {
                     href={tokens[key].twitterLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg font-mono text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
+                    className="px-4 py-2 bg-gray-800 dark:bg-gray-800 rounded-lg font-mono text-sm hover:bg-gray-700 dark:hover:bg-gray-700"
                   >
                     Twitter
                   </a>
