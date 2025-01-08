@@ -31,6 +31,7 @@ export async function GET(request: Request) {
         const response = await fetch(
             `${ENDPOINT}?${QUERY}=${API_KEY}`,
             {
+                cache: 'no-store',
                 method: "GET",
                 headers: {
                     Accept: "application/json",
