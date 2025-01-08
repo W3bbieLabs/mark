@@ -1,7 +1,10 @@
 const useGetTokens = async () => {
   try {
     console.log("Fetching tokens...");
-    const response = await fetch("/api/tokens", { next: { revalidate: 0 } });
+    const timestamp = Date.now();
+    const response = await fetch(`/api/tokens?time=${timestamp}`, {
+      next: { revalidate: 0 },
+    });
     const data = await response.json();
     return data;
   } catch (error) {

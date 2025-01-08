@@ -25,11 +25,13 @@ export async function GET(request: Request) {
         const API_KEY = process.env.API_KEY;
         const ENDPOINT = process.env.ENDPOINT;
         const QUERY = process.env.QUERY;
+        const timestamp = Date.now();
+
         if (!(await validateRequest(request))) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
         const response = await fetch(
-            `${ENDPOINT}?${QUERY}=${API_KEY}`,
+            `${ENDPOINT}?${QUERY}=${API_KEY}&time=${timestamp}`,
             {
                 next: { revalidate: 0 },
                 method: "GET",
