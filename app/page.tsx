@@ -7,6 +7,8 @@ interface Token {
   creation_timestamp: number;
   twitterLink: string;
   url: string;
+  hours_since_creation: string;
+  minutes_since_creation: string;
   // add other token properties here if needed
 }
 
@@ -37,10 +39,23 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <div className="flex flex-col gap-2 pt-80">
-        <h2 className="text-lg font-semibold text-center pt-20">
+        <h2 className="text-lg font-semibold text-center pt-40">
           Mark's Watch List:
         </h2>
         <ul className="list-disc list-inside">
+          <li className="flex justify-center py-2">
+            <div className="flex gap-2">
+              <span className="px-4 py-2 bg-gray-700 dark:bg-gray-800 rounded-lg font-mono text-sm font-bold">
+                Age
+              </span>
+              <span className="px-4 py-2 bg-gray-700 dark:bg-gray-800 rounded-lg font-mono text-sm font-bold">
+                Token
+              </span>
+              <span className="px-4 py-2 bg-gray-700 dark:bg-gray-800 rounded-lg font-mono text-sm font-bold">
+                Socials
+              </span>
+            </div>
+          </li>
           {Object.keys(tokens)
             .sort(
               (a, b) =>
@@ -49,6 +64,10 @@ export default function Home() {
             .map((key) => (
               <li key={key} className="flex justify-center py-2">
                 <div className="flex gap-2">
+                  <span className="px-4 py-2 bg-gray-800 dark:bg-gray-800 rounded-lg font-mono text-sm">
+                    {tokens[key].hours_since_creation}h{" "}
+                    {tokens[key].minutes_since_creation}m
+                  </span>
                   <a
                     href={tokens[key].url}
                     target="_blank"
