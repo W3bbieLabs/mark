@@ -6,8 +6,8 @@ import { NextResponse } from 'next/server';
 async function validateRequest(request: Request) {
     const origin = request.headers.get('referer');
     const host = request.headers.get('host');
-    console.log(request.headers);
-    console.log(origin, host);
+    // console.log(request.headers);
+    // console.log(origin, host);
 
     // In development, allow localhost
     if (process.env.NODE_ENV === 'development') {
