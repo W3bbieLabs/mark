@@ -48,6 +48,8 @@ export async function GET(request: Request) {
         );
 
         const data = await response.json();
+        console.log(Object.keys(data));
+        console.log("length: ", Object.keys(data).length);
         return NextResponse.json(data);
     } catch (error) {
         console.log(error);
