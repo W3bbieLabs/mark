@@ -1,4 +1,5 @@
-export const dynamic = "force-dynamic";
+'use server';
+//export const dynamic = "force-dynamic";
 import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 
@@ -30,7 +31,7 @@ export async function GET(request: Request) {
         const QUERY = process.env.QUERY;
         const timestamp = Date.now();
 
-        revalidatePath(ENDPOINT as string);
+        //revalidatePath(ENDPOINT as string);
 
 
         if (!(await validateRequest(request))) {
@@ -39,7 +40,6 @@ export async function GET(request: Request) {
         const response = await fetch(
             `${ENDPOINT}?${QUERY}=${API_KEY}&time=${timestamp}`,
             {
-                next: { revalidate: 0 },
                 method: "GET",
                 headers: {
                     Accept: "application/json",
