@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 
 async function validateRequest(request: Request) {
@@ -22,6 +23,8 @@ async function validateRequest(request: Request) {
 
 export async function GET(request: Request) {
     try {
+        revalidatePath("/api/tokens");
+
         const API_KEY = process.env.API_KEY;
         const ENDPOINT = process.env.ENDPOINT;
         const QUERY = process.env.QUERY;

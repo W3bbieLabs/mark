@@ -18,6 +18,7 @@ export default function Home() {
   useLayoutEffect(() => {
     (async () => {
       //if (Object.keys(tokens).length == 0) {
+
       let tokens: any = await useGetTokens();
       setTokens(tokens);
       console.log(tokens);
